@@ -9,7 +9,7 @@ import asyncio
 import json
 import logging
 import os
-from typing import Any, Optional
+from typing import Any
 
 import httpx
 from dotenv import load_dotenv
@@ -38,7 +38,7 @@ class PlainConfig(BaseModel):
         default="https://core-api.uk.plain.com/graphql/v1",
         description="Plain.com GraphQL endpoint",
     )
-    workspace_id: Optional[str] = Field(default=None, description="Workspace ID (if required)")
+    workspace_id: str | None = Field(default=None, description="Workspace ID (if required)")
 
 
 class PlainClient:
@@ -55,7 +55,7 @@ class PlainClient:
         )
 
     async def execute_query(
-        self, query: str, variables: Optional[dict[str, Any]] = None
+        self, query: str, variables: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         """Execute a GraphQL query"""
         payload = {
@@ -90,7 +90,7 @@ class PlainMCPServer:
 
     def __init__(self):
         self.server = Server("plain-mcp-server")
-        self.client: Optional[PlainClient] = None
+        self.client: PlainClient | None = None
         self._setup_handlers()
 
     def _setup_handlers(self):
@@ -280,9 +280,9 @@ class PlainMCPServer:
 
     async def _fetch_threads(
         self,
-        status: Optional[str] = None,
-        assignee_id: Optional[str] = None,
-        customer_id: Optional[str] = None,
+        status: str | None = None,
+        assignee_id: str | None = None,
+        customer_id: str | None = None,
         limit: int = 10,
         include_resolved: bool = False,
     ) -> dict[str, Any]:

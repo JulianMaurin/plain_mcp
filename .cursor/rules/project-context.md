@@ -8,7 +8,7 @@ description: Plain MCP Server project structure and conventions
 
 ## Project Overview
 
-This is a Plain.com MCP (Model Context Protocol) Server that provides tools for interacting with Plain.com's customer support API. Uses Python 3.9+ with FastMCP.
+This is a Plain.com MCP (Model Context Protocol) Server that provides tools for interacting with Plain.com's customer support API. Uses Python 3.10+ with FastMCP.
 
 ## Key Files
 

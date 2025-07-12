@@ -1,6 +1,6 @@
 """Test data and utilities for Plain.com MCP Server tests"""
 
-from typing import Any, Optional
+from typing import Any
 
 # Sample thread data for testing
 SAMPLE_THREAD = {
@@ -144,7 +144,7 @@ def create_error_response(error_messages: list[str]) -> dict[str, Any]:
 class MockGraphQLClient:
     """Mock GraphQL client for testing"""
 
-    def __init__(self, responses: Optional[dict[str, Any]] = None):
+    def __init__(self, responses: dict[str, Any] | None = None):
         self.responses = responses if responses is not None else GRAPHQL_RESPONSES
         self.call_count = 0
         self.last_query = None

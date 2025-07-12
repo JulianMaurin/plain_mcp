@@ -26,7 +26,7 @@ Runs **Ruff** which handles everything:
 
 - **Line length**: 100 characters maximum
 - **Type hints required**: Use mypy-compatible type annotations
-- **Python version**: Target Python 3.9+ (supports 3.9 to 3.13)
+- **Python version**: Target Python 3.10+ (supports 3.10 to 3.13)
 - **Structured logging**: Use appropriate log levels
 
 ## Configuration
