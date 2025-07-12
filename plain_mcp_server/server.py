@@ -155,7 +155,7 @@ class PlainMCPServer:
                     Tool(
                         name="get_thread_details",
                         description=(
-                            "Get detailed information about a specific thread " "including timeline"
+                            "Get detailed information about a specific thread including timeline"
                         ),
                         inputSchema={
                             "type": "object",

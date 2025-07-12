@@ -102,7 +102,7 @@ def demonstrate_ai_prompts():
     ]
 
     for i, example in enumerate(prompts, 1):
-        print(f"\n{i}. 💬 \"{example['prompt']}\"")
+        print(f'\n{i}. 💬 "{example["prompt"]}"')
         print(f"   🔧 Tools used: {', '.join(example['tools'])}")
         print(f"   📝 Purpose: {example['description']}")
 
