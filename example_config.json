@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "plain-support": {
+      "command": "python3",
+      "args": ["-m", "plain_mcp_server.fastserver"],
+      "env": {
+        "PLAIN_API_KEY": "your_plain_api_key_here"
+      }
+    }
+  }
+}

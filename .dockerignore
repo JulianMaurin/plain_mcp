@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.pytest_cache
+htmlcov
+.mypy_cache
+.ruff_cache
+
+# Development files
+.env
+.env.local
+.env.example
+env.example
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation (except README.md which is needed for pyproject.toml)
+docs/
+
+# CI/CD
+.github/
+
+# Test files and results
+tests/
+test-results/
+coverage/
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
