@@ -1,5 +1,7 @@
 # Plain.com MCP Server
 
+[![CI](https://github.com/JulianMaurin/plain_mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/JulianMaurin/plain_mcp/actions/workflows/ci.yml)
+
 A Model Context Protocol (MCP) server for [Plain.com](https://plain.com) customer support operations. This server provides AI-friendly tools for managing support tickets, searching historical data, and automating customer support workflows.
 
 ## Features
