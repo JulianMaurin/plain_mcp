@@ -492,7 +492,7 @@ def main():
     logger.info("Starting Plain.com MCP Server...")
 
     # Start the server
-    mcp_server.run("stdio")
+    mcp_server.run()
 
 
 if __name__ == "__main__":

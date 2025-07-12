@@ -27,7 +27,7 @@ dev = [
 ]
 
 [project.scripts]
-plain-mcp-server = "plain_mcp_server.server:main"
+plain-mcp-server = "plain_mcp_server.fastserver:main"
 
 [tool.ruff]
 target-version = "py310"

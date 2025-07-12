@@ -627,7 +627,7 @@ class TestFastMCPServer:
                 main()
 
                 mock_logger.info.assert_called_with("Starting Plain.com MCP Server...")
-                mock_server.run.assert_called_with("stdio")
+                mock_server.run.assert_called_with()
 
     @pytest.mark.integration
     async def test_filters_coverage_in_fetch_threads(self):

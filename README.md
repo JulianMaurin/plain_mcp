@@ -31,36 +31,68 @@ A Model Context Protocol (MCP) server for [Plain.com](https://plain.com) custome
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- Python 3.10 or higher
 - Plain.com account with API access
-- API key from Plain.com
 
-### Setup
+### For End Users
+
+#### Install from Source
+
+```bash
+# Install directly from GitHub
+pip install git+https://github.com/JulianMaurin/plain_mcp.git
+
+# Or clone and install locally
+git clone https://github.com/JulianMaurin/plain_mcp.git
+cd plain_mcp
+pip install .
+```
+
+#### Using Docker
+
+```bash
+# Build the Docker image
+docker build -t plain-mcp-server https://github.com/JulianMaurin/plain_mcp.git
+
+# Or use pre-built image (when available)
+docker pull ghcr.io/julianmaurin/plain_mcp:latest
+```
+
+### For Developers
 
 1. **Clone the repository:**
 ```bash
-git clone <repository-url>
-cd plain-mcp-server
+git clone https://github.com/JulianMaurin/plain_mcp.git
+cd plain_mcp
 ```
 
-2. **Install dependencies:**
+2. **Setup development environment:**
 ```bash
-# For development (includes pre-commit hooks)
+# Install with development dependencies and pre-commit hooks
 make setup
-
-# Or just install dependencies
-make install
 ```
 
-3. **Set up environment variables:**
+### Environment Configuration
+
+Create environment variables for the API:
+
 ```bash
-# Create a .env file in the project root
-PLAIN_API_KEY=your_plain_api_key_here
-PLAIN_WORKSPACE_ID=your_workspace_id_here  # Optional
+# Option 1: Set environment variables
+export PLAIN_API_KEY=your_plain_api_key_here
+export PLAIN_WORKSPACE_ID=your_workspace_id_here  # Optional
+
+# Option 2: Create .env file (for development)
+echo "PLAIN_API_KEY=your_plain_api_key_here" > .env
+echo "PLAIN_WORKSPACE_ID=your_workspace_id_here" >> .env
 ```
 
-4. **Test the installation:**
+### Verify Installation
+
 ```bash
+# Test the server starts correctly
+plain-mcp-server
+
+# Or if installed in development mode
 make run-server
 ```
 
@@ -84,21 +116,70 @@ plain-mcp-server
 
 ### MCP Client Configuration
 
-Add this server to your MCP client configuration:
+This server works with any IDE or application that supports the Model Context Protocol (MCP).
+
+#### Using the Installed Script (Recommended)
+
+After installing the package (see [Installation](#installation) section), use the `plain-mcp-server` command:
 
 ```json
 {
   "mcpServers": {
     "plain-support": {
-      "command": "python3",
-      "args": ["-m", "plain_mcp_server.fastserver"],
+      "command": "plain-mcp-server",
       "env": {
-        "PLAIN_API_KEY": "your_api_key_here"
+        "PLAIN_API_KEY": "your_api_key_here",
+        "PLAIN_WORKSPACE_ID": "your_workspace_id_here"
       }
     }
   }
 }
 ```
+
+#### Using Python Module
+
+If you prefer to run as a module:
+
+```json
+{
+  "mcpServers": {
+    "plain-support": {
+      "command": "python",
+      "args": ["-m", "plain_mcp_server.fastserver"],
+      "env": {
+        "PLAIN_API_KEY": "your_api_key_here",
+        "PLAIN_WORKSPACE_ID": "your_workspace_id_here"
+      }
+    }
+  }
+}
+```
+
+#### Docker Configuration
+
+For Docker deployment:
+
+```json
+{
+  "mcpServers": {
+    "plain-support": {
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "--env-file", "/path/to/.env",
+        "plain-mcp-server"
+      ]
+    }
+  }
+}
+```
+
+#### IDE-Specific Examples
+
+**Claude Desktop:** Add to `claude_desktop_config.json`
+**Cursor:** Configure in MCP settings
+**VS Code:** Use MCP extension configuration
+**Other IDEs:** Follow their MCP integration documentation
 
 ## Available Tools
 
